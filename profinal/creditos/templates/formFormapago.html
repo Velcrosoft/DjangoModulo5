@@ -1,0 +1,18 @@
+<form action="{% url 'formapagos' %}" method="post"> <!--sacamos el nombre de urls.py-->
+    {% csrf_token %} <!--seguridad en el formulario django-->
+    <fieldset>
+        <legend><h1>Forma de Pagos</h1></legend>
+        {% if error_message %}
+        <p class="error">{{error_message}}</p>
+        {% endif %}
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre">
+        <br>
+        <input type="submit" value="enviar">
+    </fieldset>
+</form>
+<ul>
+    {% for fpago in formapagos %}
+    <li>{{fpago}}</li>
+    {% endfor %}
+</ul>
